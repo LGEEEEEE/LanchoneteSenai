@@ -460,7 +460,7 @@ function adicionarCarrinho(id) {
 
     atualizarCarrinho();
 
-    alert(${produto.nome} foi adicionado ao carrinho!);
+    alert(`${produto.nome} foi adicionado ao carrinho!`);
 }
 
 function atualizarCarrinho() {
@@ -583,7 +583,7 @@ function finalizarPedido() {
 
     historico.unshift(pedido);
 
-    document.getElementById("numeroPedido").textContent = #${numero};
+    document.getElementById("numeroPedido").textContent = `#${numero}`;
 
     carrinho = [];
     atualizarCarrinho();
@@ -615,7 +615,7 @@ function mostrarHistorico() {
             <p>
                 ${pedido.data}<br>
                 ${pedido.itens.map(item =>
-                    ${item.quantidade}x ${item.nome}
+                    `${item.quantidade}x ${item.nome}`
                 ).join("<br>")}
             </p>
 
