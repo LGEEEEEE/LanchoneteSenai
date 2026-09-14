@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete SENAI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app">
+
+        <!-- LOGIN -->
+        <section id="login" class="screen login-screen">
+            <div class="login-logo">
+                <span>🍔</span>
+                <h1>LANCHONETE</h1>
+                <strong>SENAI</strong>
+            </div>
+
+            <div class="login-box">
+                <h2>Bem-vindo!</h2>
+                <p>Digite seu nome para continuar.</p>
+
+                <input
+                    type="text"
+                    id="nomeUsuario"
+                    placeholder="Seu nome"
+                >
+
+                <button onclick="entrar()">Entrar</button>
+
+                <small>Sabor e praticidade no seu dia!</small>
+            </div>
+        </section>
+
+        <!-- APLICATIVO -->
+        <section id="appPrincipal" class="screen hidden">
+
+            <header class="topo">
+                <button class="icon-btn" onclick="mostrarInicio()">⌂</button>
+
+                <div class="logo">
+                    LANCHONETE
+                    <strong>SENAI</strong>
+                </div>
+
+                <button class="cart-btn" onclick="abrirCarrinho()">
+                    🛒
+                    <span id="contadorCarrinho">0</span>
+                </button>
+            </header>
+
+            <!-- INÍCIO / PEDIDOS -->
+            <div id="inicio" class="pagina">
+
+                <div class="boas-vindas">
+                    <h2>Olá, <span id="nomeExibido"></span>!</h2>
+                    <p>O que você vai pedir hoje?</p>
+                </div>
+
+                <div class="atalhos">
+                    <button onclick="abrirCarrinho()">🛒<br>Meu carrinho</button>
+                    <button onclick="mostrarHistorico()">📋<br>Pedidos anteriores</button>
+                </div>
+
+                <h3 class="titulo-secao">Faça seu pedido</h3>
+
+                <nav class="categorias">
+                    <button class="categoria ativa" onclick="filtrar('todos', this)">
+                        🍽️<span>Todos</span>
+                    </button>
+
+                    <button class="categoria" onclick="filtrar('doces', this)">
+                        🍰<span>Doces</span>
+                    </button>
+
+                    <button class="categoria" onclick="filtrar('bebidas', this)">
+                        🥤<span>Bebidas</span>
+                    </button>
+
+                    <button class="categoria" onclick="filtrar('fritos', this)">
+                        🥟<span>Fritos</span>
+                    </button>
+
+                    <button class="categoria" onclick="filtrar('assados', this)">
+                        🥐<span>Assados</span>
+                    </button>
+                </nav>
+
+                <div id="listaProdutos" class="produtos"></div>
+            </div>
+
+            <!-- CARRINHO -->
+            <div id="carrinho" class="pagina hidden">
+                <div class="pagina-titulo">
+                    <button onclick="mostrarInicio()">←</button>
+                    <h2>Meu carrinho</h2>
+                </div>
+
+                <div id="itensCarrinho"></div>
+
+                <div class="resumo">
+                    <span>Total do pedido</span>
+                    <strong id="totalCarrinho">R$ 0,00</strong>
+                </div>
+
+                <button class="botao-principal" onclick="abrirPagamento()">
+                    Continuar para pagamento
+                </button>
+            </div>
+
+            <!-- PAGAMENTO -->
+            <div id="pagamento" class="pagina hidden">
+                <div class="pagina-titulo">
+                    <button onclick="abrirCarrinho()">←</button>
+                    <h2>Forma de pagamento</h2>
+                </div>
+
+                <h3>Escolha o método:</h3>
+
+                <div class="formas">
+                    <label>
+                        <input type="radio" name="pagamento" value="Pix" checked>
+                        <span>💠 <b>Pix</b><small>Pagamento instantâneo</small></span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="pagamento" value="Cartão de crédito">
+                        <span>💳 <b>Cartão de crédito</b><small>Pagamento na lanchonete</small></span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="pagamento" value="Cartão de débito">
+                        <span>💳 <b>Cartão de débito</b><small>Pagamento na lanchonete</small></span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="pagamento" value="Dinheiro">
+                        <span>💵 <b>Dinheiro</b><small>Pagamento na lanchonete</small></span>
+                    </label>
+                </div>
+
+                <div class="resumo">
+                    <span>Total do pedido</span>
+                    <strong id="totalPagamento">R$ 0,00</strong>
+                </div>
+
+                <button class="botao-principal" onclick="finalizarPedido()">
+                    Finalizar pedido
+                </button>
+            </div>
+
+            <!-- PEDIDO CONFIRMADO -->
+            <div id="confirmacao" class="pagina hidden confirmacao">
+                <div class="check">✓</div>
+                <h2>Pedido enviado!</h2>
+                <p>Seu pedido foi registrado com sucesso.</p>
+
+                <div class="numero-pedido">
+                    Número do pedido
+                    <strong id="numeroPedido"></strong>
+                </div>
+
+                <button class="botao-principal" onclick="mostrarHistorico()">
+                    Ver meus pedidos
+                </button>
+
+                <button class="botao-secundario" onclick="mostrarInicio()">
+                    Voltar para o início
+                </button>
+            </div>
+
+            <!-- HISTÓRICO -->
+            <div id="historico" class="pagina hidden">
+                <div class="pagina-titulo">
+                    <button onclick="mostrarInicio()">←</button>
+                    <h2>Meus pedidos</h2>
+                </div>
+
+                <div id="listaHistorico">
+                    <p class="vazio">Você ainda não fez nenhum pedido.</p>
+                </div>
+            </div>
+
+            <!-- MENU INFERIOR -->
+            <footer class="menu-inferior">
+                <button onclick="mostrarInicio()">⌂<span>Início</span></button>
+                <button onclick="mostrarHistorico()">📋<span>Pedidos</span></button>
+                <button onclick="abrirCarrinho()">🛒<span>Carrinho</span></button>
+                <button onclick="sair()">↪️<span>Sair</span></button>
+            </footer>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

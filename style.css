@@ -1,0 +1,628 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --azul: #06264d;
+    --azul-claro: #0c376b;
+    --laranja: #ff7200;
+    --laranja-claro: #ff9138;
+    --fundo: #f5f7fa;
+    --texto: #152b48;
+    --borda: #e1e6ed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #e9edf2;
+    color: var(--texto);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: auto;
+    background: var(--fundo);
+    position: relative;
+    overflow: hidden;
+}
+
+.screen {
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LOGIN */
+
+.login-screen {
+    background: var(--azul);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-screen::before {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    background: var(--laranja);
+    border-radius: 50%;
+    top: -145px;
+    right: -100px;
+}
+
+.login-screen::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: var(--laranja);
+    border-radius: 50%;
+    bottom: -150px;
+    left: -120px;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-logo span {
+    font-size: 72px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.login-logo h1 {
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.login-logo strong {
+    color: var(--laranja);
+    font-size: 42px;
+    display: block;
+    letter-spacing: 2px;
+}
+
+.login-box {
+    background: white;
+    color: var(--texto);
+    border-radius: 24px;
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.login-box h2 {
+    margin-bottom: 8px;
+}
+
+.login-box p {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 22px;
+}
+
+.login-box input {
+    width: 100%;
+    border: 1px solid var(--borda);
+    padding: 15px;
+    border-radius: 12px;
+    outline: none;
+    margin-bottom: 14px;
+}
+
+.login-box input:focus {
+    border-color: var(--laranja);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 15px;
+    background: var(--laranja);
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+}
+
+.login-box small {
+    display: block;
+    margin-top: 25px;
+    color: #718096;
+    font-size: 11px;
+}
+
+/* CABEÇALHO */
+
+.topo {
+    background: var(--azul);
+    color: white;
+    padding: 18px 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.logo strong {
+    color: var(--laranja);
+    display: block;
+    font-size: 22px;
+}
+
+.icon-btn,
+.cart-btn {
+    background: transparent;
+    color: white;
+    font-size: 24px;
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.cart-btn span {
+    position: absolute;
+    top: -9px;
+    right: -10px;
+    background: var(--laranja);
+    border-radius: 50%;
+    font-size: 10px;
+    padding: 4px 6px;
+}
+
+/* CONTEÚDO */
+
+.pagina {
+    padding: 22px 18px 105px;
+}
+
+.boas-vindas h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.boas-vindas p {
+    font-size: 13px;
+    color: #718096;
+}
+
+.atalhos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 22px 0;
+}
+
+.atalhos button {
+    background: white;
+    border: 1px solid var(--borda);
+    padding: 15px 8px;
+    border-radius: 14px;
+    color: var(--azul);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.titulo-secao {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* CATEGORIAS */
+
+.categorias {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+}
+
+.categoria {
+    min-width: 73px;
+    padding: 12px 5px;
+    border-radius: 13px;
+    background: white;
+    color: var(--azul);
+    border: 1px solid var(--borda);
+    font-size: 20px;
+}
+
+.categoria span {
+    display: block;
+    font-size: 10px;
+    margin-top: 7px;
+    font-weight: 600;
+}
+
+.categoria.ativa {
+    background: var(--laranja);
+    color: white;
+    border-color: var(--laranja);
+}
+
+/* PRODUTOS */
+
+.produtos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.produto {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.produto-imagem {
+    width: 78px;
+    height: 78px;
+    background: #fff0e5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    flex-shrink: 0;
+}
+
+.produto-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.produto-info h3 {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.produto-info p {
+    color: #7b8797;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 7px;
+}
+
+.preco {
+    color: var(--laranja);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.adicionar {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background: var(--laranja);
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* TÍTULOS */
+
+.pagina-titulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.pagina-titulo button {
+    background: var(--azul);
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+}
+
+.pagina-titulo h2 {
+    font-size: 20px;
+}
+
+/* CARRINHO */
+
+.item-carrinho {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--borda);
+}
+
+.item-emoji {
+    font-size: 32px;
+}
+
+.item-detalhes {
+    flex: 1;
+}
+
+.item-detalhes h3 {
+    font-size: 12px;
+}
+
+.item-detalhes p {
+    color: var(--laranja);
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 8px;
+}
+
+.quantidade button {
+    background: #edf1f5;
+    color: var(--azul);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.remover {
+    background: transparent;
+    color: #c53030;
+    font-size: 18px;
+}
+
+.resumo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0;
+    padding: 17px 0;
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+}
+
+.resumo span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.resumo strong {
+    color: var(--laranja);
+    font-size: 20px;
+}
+
+/* BOTÕES */
+
+.botao-principal {
+    width: 100%;
+    background: var(--laranja);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.botao-secundario {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    background: white;
+    color: var(--azul);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+/* PAGAMENTO */
+
+.formas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.formas label {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 13px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.formas input {
+    accent-color: var(--laranja);
+}
+
+.formas span {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formas small {
+    color: #718096;
+    font-size: 10px;
+}
+
+/* CONFIRMAÇÃO */
+
+.confirmacao {
+    text-align: center;
+    padding-top: 65px;
+}
+
+.check {
+    width: 80px;
+    height: 80px;
+    background: var(--laranja);
+    color: white;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    font-size: 55px;
+    line-height: 80px;
+}
+
+.confirmacao h2 {
+    margin-bottom: 12px;
+}
+
+.confirmacao p {
+    color: #718096;
+    font-size: 13px;
+}
+
+.numero-pedido {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 30px 0;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.numero-pedido strong {
+    font-size: 28px;
+    color: var(--azul);
+}
+
+/* HISTÓRICO */
+
+.pedido-anterior {
+    background: white;
+    padding: 17px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--borda);
+}
+
+.pedido-anterior .pedido-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.pedido-anterior h3 {
+    font-size: 14px;
+}
+
+.pedido-anterior .status {
+    color: #087f5b;
+    background: #d9f8ed;
+    padding: 5px 8px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.pedido-anterior p {
+    color: #718096;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.pedido-anterior strong {
+    color: var(--laranja);
+}
+
+.vazio {
+    color: #718096;
+    text-align: center;
+    font-size: 13px;
+    padding: 30px 10px;
+}
+
+/* MENU INFERIOR */
+
+.menu-inferior {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 78px;
+    background: white;
+    border-top: 1px solid var(--borda);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
+
+.menu-inferior button {
+    background: transparent;
+    color: #718096;
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-inferior button:first-child {
+    color: var(--laranja);
+}
+
+.menu-inferior span {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+@media (min-width: 481px) {
+    .app {
+        min-height: 100vh;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .12);
+    }
+}
